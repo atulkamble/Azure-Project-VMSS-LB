@@ -3,7 +3,7 @@ Creating a project to set up an Azure Virtual Machine Scale Set (VMSS) and a Pub
 
 ### Prerequisites
 1. **Azure Subscription**: Ensure you have an active Azure subscription.
-2. **Azure CLI**: Install the Azure CLI on your local machine.
+2. **Azure CLI**: Install the Azure CLI on your local machine. [Azure CLI](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli-windows?tabs=azure-cli)
 
 ### Steps and Code
 
@@ -112,21 +112,33 @@ az vmss create \
   --vnet-name MyVNet \
   --subnet MySubnet \
   --backend-pool-name MyBackEndPool \
-  --lb-name MyLoadBalancer \
+  --lb-name MyLoadBalancer \ 
   --instance-count 2
 ```
 
 #### 10. **Install a Web Server on the VMSS Instances**
 Use a custom script extension to install a web server on the VM instances.
+Login to account | pop up from browser | paste code 
 
-```sh
-az vmss extension set \
-  --publisher Microsoft.Azure.Extensions \
-  --version 2.0 \
-  --name CustomScript \
-  --resource-group MyResourceGroup \
-  --vmss-name MyVMSS \
-  --settings '{"fileUris": ["https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vmss-custom-script-linux/scripts/install_apache.sh"], "commandToExecute": "./install_apache.sh"}'
+VMSS >> Extensions >> Custom Script for Linux >> Storage Account >> Container >> script.sh
+sh script.sh
+
+```
+#!/bin/bash
+dpkg --configure -a
+apt-get -y update
+
+# install Apache2
+apt-get -y install apache2
+apt-get -y update
+apt-get -y install mysql-server
+apt-get -y install php libapache2-mod-php php-mysql
+# write some HTML
+cd /var/www/html/
+echo "<h1>hello from $(hostname -f)</h1>">/var/www/html/index.html
+
+# restart Apache
+apachectl restart
 ```
 
 #### 11. **Test the Load Balancer**
