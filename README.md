@@ -1,6 +1,11 @@
 # Azure-Project-VMSS-LB
 Creating a project to set up an Azure Virtual Machine Scale Set (VMSS) and a Public Load Balancer for a web server involves several steps. Below are the steps and example code to guide you through the process.
 
+# Clone This Project Codes
+```
+git clone
+cd 
+```
 ### Prerequisites
 1. **Azure Subscription**: Ensure you have an active Azure subscription.
 2. **Azure CLI**: Install the Azure CLI on your local machine. [Azure CLI](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli-windows?tabs=azure-cli)
