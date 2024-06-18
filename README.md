@@ -3,8 +3,8 @@ Creating a project to set up an Azure Virtual Machine Scale Set (VMSS) and a Pub
 
 # Clone This Project Codes
 ```
-git clone
-cd 
+git clone https://github.com/atulkamble/Azure-Project-VMSS-LB.git
+cd Azure-Project-VMSS-LB
 ```
 ### Prerequisites
 1. **Azure Subscription**: Ensure you have an active Azure subscription.
