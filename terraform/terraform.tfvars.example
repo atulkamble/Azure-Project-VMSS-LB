@@ -1,0 +1,40 @@
+# Copy this file to terraform.tfvars and customize the values
+# cp terraform.tfvars.example terraform.tfvars
+
+# Resource Group Configuration
+resource_group_name = "MyResourceGroup"
+location           = "East US"
+
+# Virtual Network Configuration
+vnet_name              = "MyVNet"
+vnet_address_space     = "10.0.0.0/16"
+subnet_name           = "MySubnet"
+subnet_address_prefix = "10.0.0.0/24"
+
+# Load Balancer Configuration
+public_ip_name      = "MyPublicIP"
+load_balancer_name  = "MyLoadBalancer"
+frontend_ip_name   = "MyFrontEndPool"
+backend_pool_name  = "MyBackEndPool"
+health_probe_name  = "MyHealthProbe"
+lb_rule_name       = "MyLoadBalancerRuleWeb"
+
+# Network Security Group
+nsg_name = "MyNetworkSecurityGroup"
+
+# Virtual Machine Scale Set Configuration
+vmss_name       = "MyVMSS"
+vm_sku          = "Standard_B1s"  # Options: Standard_B1s, Standard_B2s, Standard_D2s_v3, etc.
+instance_count  = 2
+admin_username  = "azureuser"
+
+# SSH Public Key (replace with your actual public key)
+ssh_public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC7... your-email@domain.com"
+
+# Resource Tags
+tags = {
+  Environment = "Development"
+  Project     = "VMSS-LoadBalancer"
+  Owner       = "DevOps"
+  CreatedBy   = "Terraform"
+}
